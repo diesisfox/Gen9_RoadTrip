@@ -57,6 +57,12 @@ ${('#').repeat(w)}
 		process.stdout.write(`${chalk.red('ALL PORTS ARE DED, EXITING!!!')}`);
 		process.exit();
 	}else{
+		if (global.gc) {
+			global.gc();
+		}else {
+			console.log('Garbage collection unavailable.  Pass --expose-gc '
+			+ 'when launching node to enable forced garbage collection.');
+		}
 		setTimeout(printStatus, 200);
 	}
 }
